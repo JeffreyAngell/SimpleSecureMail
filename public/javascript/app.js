@@ -3,14 +3,18 @@ var app = angular.module("app", ['ngRoute']);
 app.config(function($routeProvider){
   $routeProvider.when("/",
     {
-      templateUrl: "app.html",
-      controller: "AppCtrl"
+      templateUrl: "about.html"
+    }
+  ).when("/tutorial",
+    {
+      templateUrl: "tutorial.html"
+    }
+  ).when("/download",
+    {
+      templateUrl: "download.html"
     }
   );
 });
 
 app.controller("AppCtrl", function($scope){
-  $scope.model = {
-    message: "This is my app!!!"
-  }
 });

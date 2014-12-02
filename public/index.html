@@ -33,13 +33,13 @@
               <img alt="Brand" src="resource/logo.png" class="logo">  
             </div>
             <div class="link-div">
-              <a href="index.html">
+              <a href="#/">
                 <button type="button" class="btn btn-lg btn-default navbar-btn link-button">About</button>
               </a>
-              <a href="tutorial.html">
+              <a href="#/tutorial">
                 <button type="button" class="btn btn-lg btn-default navbar-btn link-button">Tutorial</button>
               </a>
-              <a href="download.html">
+              <a href="#/download">
                 <button type="button" class="btn btn-lg btn-default navbar-btn link-button">Download</button>
               </a>
             </div>
@@ -49,12 +49,26 @@
       <!--================================ -->
 
 
+      <div class="container">
+        <ng-view>
+
+        <ng-view>
+      </div>
 
 
-	<ng-view>
+      <hr>
 
-	<ng-view>
-
+      <footer>
+        <p>&copy; SimpleSecureMail 2014</p>
+      </footer>
     </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
