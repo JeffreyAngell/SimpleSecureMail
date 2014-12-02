@@ -17,8 +17,11 @@ module.exports = {
 		 keypair.findOne({'email': address}, 'public', function (err, pair){
 			if(!err){
 				if(pair == null){
-					keypairgen.generate(address, function(keypair){
-						callback(keypair.public);
+					keypairgen.generate(address, function(mypair){
+						mypair.email = address;
+						var spair = new keypair(mypair);
+						spair.save(function(err){});
+						callback(spair.public);
 					});
 				} else{
 					callback(pair.public);
@@ -34,8 +37,11 @@ module.exports = {
 		keypair.findOne({'email': address}, 'private', function (err, pair){
 			if(!err){
 				if(pair == null){
-					keypairgen.generate(address, function(keypair){
-						callback(keypair.private);
+					keypairgen.generate(address, function(mypair){
+						mypair.email = address;
+						var spair = new keypair(mypair);
+						spair.save(function(err){});
+						callback(spair.private);
 					});
 				} else{
 					callback(pair.private);
