@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12 col-lg-12" style="text-align:left">
+    <table width="40%">
+      <tr>
+        <td>
+          <span>Email Address: </span>
+        </td>
+        <td>
+          <form name="emailForm">
+            <input type="email" name="input" ng-model="emailAddress" size="30" required/>
+          </form>
+        </td>
+      </tr>
+      <tr class="blank-row"></tr>
+      <tr>
+        <td>
+          <span>Public Key: </span>
+        </td>
+        <td>
+          <input ng-model="pubKey" size="30"/>
+        </td>
+        <td>
+          <button ng-click="checkEmail()">Get Key</button>
+        </td>  
+      </tr>
+    </table>
+  </div>
+</div>
