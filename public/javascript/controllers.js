@@ -5,11 +5,15 @@
 var ssmailControllers = angular.module('ssmailControllers', []);
 
 ssmailControllers.controller('EncryptControl', ['$scope', 'Key',
-  function($scope) {
+  function($scope, Key) {
     $scope.checkEmail = function() {    
       if(!$scope.emailForm.$valid){
         alert('Please enter a valid email address');
       } else {
+        $scope.pubKeyJson = Key.get({ type : 'public', email : $scope.emailAddress }, function() {
+          console.log($scope.pubKeyJson);  
+        });
+        
         
       }
     }
