@@ -28,14 +28,18 @@ ssmailControllers.controller('EncryptControl', ['$scope', 'Key',
     }
   }]);
   
-ssmailControllers.controller('DecryptControl', ['$scope', 'Key',
-  function($scope, Key) {
+ssmailControllers.controller('DecryptControl', ['$scope', 'Key', '$window',
+  function($scope, Key, $window) {
     $scope.checkEmail = function() {  
       if(!$scope.emailForm.$valid){
         alert('Please enter a valid email address');
-      } else {        
+      } else {
         $scope.privKeyJson = Key.get({ type : 'private', email : $scope.emailAddress }, function() {
-          $scope.privKey = $scope.privKeyJson.key//.replace('PRIVATE KEY', 'RSA PRIVATE KEY');
+        	if($scope.privKeyJson.redirect != null){
+        		$window.location.href = $scope.privKeyJson.redirect;
+        	} else{
+				$scope.privKey = $scope.privKeyJson.key;
+			}
         });        
       }
     }
