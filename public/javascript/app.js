@@ -19,8 +19,8 @@ app.config(['$routeProvider',
         controller: 'EncryptControl'
       }).
       when('/decrypt', {
-        templateUrl: 'decrypt.html'
-        //controller: 'DecryptCtrl'
+        templateUrl: 'decrypt.html',
+        controller: 'DecryptControl'
       }).
       otherwise({
         redirectTo: '/'
