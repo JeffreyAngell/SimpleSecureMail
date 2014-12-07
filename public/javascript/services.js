@@ -10,4 +10,9 @@ ssmailServices.factory('Key', ['$resource',
     });
   }]);
 
+ssmailServices.factory('PrivKey', ['$resource',
+	function($resource){
+		return $resource('api/:type',{},{});
+	}]);
+
 

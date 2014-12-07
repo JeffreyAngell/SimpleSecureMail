@@ -28,13 +28,22 @@ ssmailControllers.controller('EncryptControl', ['$scope', 'Key',
     }
   }]);
   
-ssmailControllers.controller('DecryptControl', ['$scope', 'Key', '$window',
-  function($scope, Key, $window) {
+ssmailControllers.controller('DecryptControl', ['$scope', 'PrivKey', '$window', '$http',
+  function($scope, PrivKey, $window, $http) {
+
+    if ($http.defaults.headers.common.Authorization){
+      $scope.buttonText = "Get Key"
+    } else {
+      $scope.buttonText = "Login"
+    }
+
+
+
     $scope.checkEmail = function() {  
-      if(!$scope.emailForm.$valid){
+      if(false){
         alert('Please enter a valid email address');
       } else {
-        $scope.privKeyJson = Key.get({ type : 'private', email : $scope.emailAddress }, function() {
+        $scope.privKeyJson = PrivKey.get({ type : 'private' }, function() {
         	if($scope.privKeyJson.redirect != null){
         		$window.location.href = $scope.privKeyJson.redirect;
         	} else{
