@@ -15,7 +15,7 @@ apiRouter.get("/public/:email", function(req, res){
 	});
 });
 
-apiRouter.use("/private/:email", function(req, res, next){
+apiRouter.use("/private", function(req, res, next){
 	if(req.headers["authorization"] === undefined){
 		res.status(200).json({"redirect": "https://accounts.google.com/o/oauth2/auth?" + 			"response_type=token&" +
 			"client_id=974406176197-fs442gf80elneq6mcotdug4nh4fnf14d.apps.googleusercontent.com&" + 
@@ -31,8 +31,10 @@ apiRouter.use("/private/:email", function(req, res, next){
 			response.on("data", function(data){
 				body += data;
 				user = JSON.parse(body);
-				if(user.email == req.params.email && user.verified_email == true)
-					next();
+				if(user.verified_email == true)
+					keys.getPrivate(user.email, function(key){
+						res.status(200).json({ "key": key});
+					});
 				else
 					res.status(401).send("Failed Authorization");
 			});
