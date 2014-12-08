@@ -3,8 +3,10 @@ var app = angular.module("app", [
   'ssmailServices',
   'ssmailControllers']);
 
-app.config(['$routeProvider',
-  function($routeProvider) {
+app.config(['$routeProvider', '$locationProvider',
+  function($routeProvider, $locationProvider) {
+  	$locationProvider.html5Mode({enabled: true, requireBase: false});
+  	
     $routeProvider.
       when('/', {
         templateUrl: 'about.html',
@@ -26,3 +28,17 @@ app.config(['$routeProvider',
         redirectTo: '/'
       });
   }]);
+  
+app.run(function($rootScope, $location, $http){
+	$rootScope.$on('$locationChangeStart', function(a, b){
+		var list = $location.path().split("&");
+		for(var i = 0; i < list.length; i++){
+			var params = list[i].split("=");
+			if(params[0] == "access_token"){
+				$http.defaults.headers.common.Authorization = "Bearer " + params[1];
+				a.preventDefault();
+				$location.path("/decrypt");
+			}
+		}
+	});
+});
