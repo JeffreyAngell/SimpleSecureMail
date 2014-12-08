@@ -48,6 +48,24 @@ apiRouter.get("/private/:email", function(req, res){
 	});
 });
 
+apiRouter.get("/me", function(req, res){
+	var options = {
+		host: "www.googleapis.com",
+		path: "/oauth2/v1/tokeninfo?access_token=" + req.headers["authorization"].split(" ")[1]
+	}
+	https.request(options, function(response){
+		body = "";
+		response.on("data", function(data){
+			body += data;
+			user = JSON.parse(body);
+			if(user.verified_email == true)
+				res.status(200).json({"email":user.email});
+			else
+				res.status(401).send("Failed Authorization");
+		});
+	}).end();
+});
+
 app.use("/api", apiRouter);
 app.use("/", staticRouter);
 

@@ -32,9 +32,14 @@ ssmailControllers.controller('DecryptControl', ['$scope', 'PrivKey', '$window', 
   function($scope, PrivKey, $window, $http) {
 
     if ($http.defaults.headers.common.Authorization){
-      $scope.buttonText = "Get Key"
+      $scope.buttonText = "Get Key";
+      $scope.isLoggedIn = true;
+      $http.get("/api/me").success(function(data){
+        $scope.loggedInName = data["email"]
+      });
     } else {
-      $scope.buttonText = "Login"
+      $scope.isLoggedIn = false;
+      $scope.buttonText = "Login";
     }
 
 
