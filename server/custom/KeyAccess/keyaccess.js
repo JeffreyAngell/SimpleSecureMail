@@ -8,13 +8,14 @@ db.on('error', function(){
 	process.exit(0);
 });
 
-var keypairSchema = mongoose.Schema({ email: String, public: String, private: String });
+var keypairSchema = mongoose.Schema({ email: String, public: String, private: String, expireAt: {type: Date, default: new Date(new Date().getTime() + 1000*60*60*24*2)} });
 
 var keypair = mongoose.model('keypair', keypairSchema);
 
 module.exports = {
 	getPublic: function(address, callback){
-		 keypair.findOne({'email': address}, 'public', function (err, pair){
+		var query = keypair.where({"email": address});
+		query.findOne(function (err, pair){
 			if(!err){
 				if(pair == null){
 					keypairgen.generate(address, function(mypair){
@@ -24,6 +25,11 @@ module.exports = {
 						callback(spair.public);
 					});
 				} else{
+					if(pair.expireAt.getTime() - new Date().getTime() < 1000*60*60*24*3){
+						pair.expireAt = new Date(new Date().getTime() + 1000*60*60*24*3);
+						var spair = new keypair(pair);
+						spair.update(function(err){});
+					}
 					callback(pair.public);
 				}
 			} else{
@@ -34,7 +40,8 @@ module.exports = {
 	},
 
 	getPrivate: function(address, callback){
-		keypair.findOne({'email': address}, 'private', function (err, pair){
+		var query = keypair.where({"email": address});
+		query.findOne(function (err, pair){
 			if(!err){
 				if(pair == null){
 					keypairgen.generate(address, function(mypair){
@@ -44,6 +51,11 @@ module.exports = {
 						callback(spair.private);
 					});
 				} else{
+					if(pair.expireAt.getTime() - new Date().getTime() < 1000*60*60*24*3){
+						pair.expireAt = new Date(new Date().getTime() + 1000*60*60*24*3);
+						var spair = new keypair(pair);
+						spair.update(function(err){});
+					}
 					callback(pair.private);
 				}
 			} else{
