@@ -8,12 +8,11 @@
 	<script src="javascript/app.js"></script>
   <script src="javascript/services.js"></script>
   <script src="javascript/controllers.js"></script>
-  <script src="javascript/cryptico.js"></script>
   <script src="javascript/jsencrypt.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SafeMail</title>
+    <title>SimpleSecureMail</title>
 
     <!-- Bootstrap -->
     <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -31,24 +30,26 @@
     <div class="container">
       <!--================================ -->
       <!-- Default navbar across all pages -->
-      <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" style="background-color:#2B3A42" role="navigation">
-        <div class="container">
+      <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#2B2922" role="navigation">
+        <div class="container-fluid">
             <div class="navbar-header">
-              <img alt="Brand" src="resource/logo.png" class="logo">  
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapseMenuItems">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">
+                <img class="logo navbar-left" alt="Brand" src="resource/logoLight.png">
+              </a>
             </div>
-            <div class="link-div">
-              <a href="/">
-                <button type="button" class="btn btn-lg btn-default navbar-btn link-button">About</button>
-              </a>
-              <a href="/tutorial">
-                <button type="button" class="btn btn-lg btn-default navbar-btn link-button">Tutorial</button>
-              </a>
-              <a href="/encrypt">
-                <button type="button" class="btn btn-lg btn-default navbar-btn link-button">EncryptEmail</button>
-              </a>
-              <a href="/decrypt">
-                <button type="button" class="btn btn-lg btn-default navbar-btn link-button">DecryptEmail</button>
-              </a>
+            <div class="collapse navbar-collapse" id="collapseMenuItems">
+              <ul class="nav navbar-nav">
+                <li><a href="/" class="header-link"><span>ABOUT</span></a></li>
+                <li><a href="/tutorial"><span>TUTORIAL</span></a></li>
+                <li><a href="/encrypt"><span>ENCRYPT EMAIL</span></a></li>
+                <li><a href="/decrypt"><span>DECRYPT EMAIL</span></a></li>
+              </ul>
             </div>
         </div>
       </nav>
@@ -71,6 +72,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/collapse.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 </body>
