@@ -10,6 +10,10 @@ body {
 	float:right;
 }
 
+.cream-text {
+  background-color:#EFE4BD;
+}
+
 .logo {
 	height:20px;
 }
@@ -27,6 +31,16 @@ body {
 @media (max-width: 480px) {
     .slogan{
       font-size:18px;
+    }
+}
+
+.en-button {
+  float:right;
+}
+
+@media (max-width: 640px) {
+    .slogan{
+      font-size:22px;
     }
 }
 
@@ -58,6 +72,17 @@ body {
   background-color:#A32500;
   color:#EFE4BD;
   border-color:#A39770;
+}
+
+.resizable(@direction: both) {
+  // Options: horizontal, vertical, both
+  resize: @direction;
+  // Safari fix
+  overflow: auto;
+}
+
+.dark-text {
+  color:#2B2922;
 }
 
 p {

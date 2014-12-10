@@ -8,11 +8,11 @@
       </tr>
       <tr class="blank-row"></tr>
       <tr>
-        <td>
-          <p>Private Key: </p>
+        <td style="vertical-align:middle">
+          <span class="dark-text">Private Key: </span>
         </td>
         <td>
-          <input ng-model="privKey" size="30"/>
+          <input ng-model="privKey" class="cream-text" size="30"/>
           <button ng-click="checkEmail()" class="orange-button">{{buttonText}}</button>
         </td>  
       </tr>
@@ -20,9 +20,14 @@
     </table>
   </div>
   
-  <div class="col-md-12" style=text-align:left">
+  <div class="col-md-12" style="text-align:left position: relative">
     <p>Paste encrypted message here:</p>
-    <textarea ng-model="emailBody" cols="80" rows="20"></textarea>
-    <button ng-click="decryptEmail()" class="orange-button">Decrypt</button>
+    <textarea ng-model="emailBody" class="cream-text form-control" cols="80" rows="18"></textarea>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <button ng-click="decryptEmail()" class="orange-button en-button">Decrypt</button>
   </div>
 </div>

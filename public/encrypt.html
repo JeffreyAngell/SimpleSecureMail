@@ -2,22 +2,22 @@
   <div class="col-md-12 col-lg-12" style="text-align:left">
     <table width="40%">
       <tr>
-        <td>
-          <p>Email Address: </p>
+        <td style="vertical-align:middle">
+          <span class="dark-text">Email Address: </span>
         </td>
         <td>
           <form name="emailForm">
-            <input type="email" name="input" ng-model="emailAddress" size="30" required/>
+            <input type="email" name="input" ng-model="emailAddress" class="cream-text" size="30" required/>
           </form>
         </td>
       </tr>
       <tr class="blank-row"></tr>
       <tr>
-        <td>
-          <p>Public Key: </p>
+        <td style="vertical-align:middle">
+          <span class="dark-text">Public Key: </span>
         </td>
         <td>
-          <input ng-model="pubKey" size="30"/>
+          <input ng-model="pubKey" class="cream-text" size="30"/>
           <button ng-click="checkEmail()" class="orange-button">Get Key</button>
         </td>  
       </tr>
@@ -25,9 +25,14 @@
     </table>
   </div>
   
-  <div class="col-md-12" style=text-align:left">
-    <p>Type email body here:</p>
-    <textarea ng-model="emailBody" cols="80" rows="20"></textarea>
-    <button ng-click="encryptEmail()" class="orange-button">Encrypt</button>
+  <div class="col-md-12" style="text-align:left; position:relative">
+    <p>Type email body here:</p> 
+    <textarea ng-model="emailBody" class="cream-text form-control"rows="18"></textarea>    
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <button ng-click="encryptEmail()" class="orange-button en-button">Encrypt</button>
   </div>
 </div>
