@@ -1,7 +1,7 @@
 /* Some basic defaults for the website */
 
 body {
-	background-color: #3F5765;
+	background-color: #BAB293;
 	margin-top:70px;
 }
 
@@ -10,14 +10,13 @@ body {
 	float:right;
 }
 
-.link-button {
-	background-color:#FF530D;
-	color:#EFEFEF;
-	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+.logo {
+	height:20px;
 }
 
-.logo {
-	height:60px;
+.about-image {
+  height:200px;
+  width:200px;
 }
 
 .top-buffer {
@@ -25,19 +24,17 @@ body {
 }
 
 .small-top-buffer {
-	margin-top:30px;
-}
-
-.header-link {
-	font-family: sans-serif;
-	font-size:2ems;
-	color:#FFCBA4;
+	margin-top:50px;
 }
 
 .about-jumbo {
-	background-color:#3F5765;
-	color:#EFEFEF;
+	background-color:#A32500;
+	color:#EFE4BD;
 	text-align:center;
+	border:2px solid;
+	border-color:#263248;
+	border-radius:10px;
+	box-shadow: 10px 10px 5px #A39770;
 }
 
 .about-rule {
@@ -46,28 +43,28 @@ body {
 }
 
 .slogan {
-	font-family:"Georgia", serif;
-	color:#EFEFEF;
+	font-family:"Verdana", sans-serif;
+	color:#EFE4BD;
 }
 
 p {
-	color:#EFEFEF;
+	color:#2B2922;
 }
 
 h1 {
-	color:#EFEFEF
+	color:#2B2922
 }
 
 h2 {
-	color:#EFEFEF
+	color:#2B2922
 }
 
 h3 {
-	color:#EFEFEF
+	color:#2B2922
 }
 
 span {
-  color:#EFEFEF
+  color:#EFE4BD
 }
 
 .blank-row {
