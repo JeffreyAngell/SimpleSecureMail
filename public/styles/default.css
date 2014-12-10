@@ -19,8 +19,15 @@ body {
   width:200px;
 }
 
-.top-buffer {
-	
+.jumbo-image {
+  height:100% \9;
+  width: 100% \9;
+}
+
+@media (max-width: 480px) {
+    .slogan{
+      font-size:18px;
+    }
 }
 
 .small-top-buffer {
@@ -47,6 +54,12 @@ body {
 	color:#EFE4BD;
 }
 
+.orange-button {
+  background-color:#A32500;
+  color:#EFE4BD;
+  border-color:#A39770;
+}
+
 p {
 	color:#2B2922;
 }
@@ -69,4 +82,12 @@ span {
 
 .blank-row {
   height: 10px !important; /* Overwrite any previous rules */
+}
+
+.blank-col {
+  width: 90px !important
+}
+
+.big-blank-row {
+  height: 15px !important;
 }

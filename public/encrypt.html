@@ -3,7 +3,7 @@
     <table width="40%">
       <tr>
         <td>
-          <span>Email Address: </span>
+          <p>Email Address: </p>
         </td>
         <td>
           <form name="emailForm">
@@ -14,13 +14,11 @@
       <tr class="blank-row"></tr>
       <tr>
         <td>
-          <span>Public Key: </span>
+          <p>Public Key: </p>
         </td>
         <td>
           <input ng-model="pubKey" size="30"/>
-        </td>
-        <td>
-          <button ng-click="checkEmail()">Get Key</button>
+          <button ng-click="checkEmail()" class="orange-button">Get Key</button>
         </td>  
       </tr>
       <tr class="blank-row"></tr>
@@ -30,6 +28,6 @@
   <div class="col-md-12" style=text-align:left">
     <p>Type email body here:</p>
     <textarea ng-model="emailBody" cols="80" rows="20"></textarea>
-    <button ng-click="encryptEmail()">Encrypt</button>
+    <button ng-click="encryptEmail()" class="orange-button">Encrypt</button>
   </div>
 </div>
