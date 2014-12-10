@@ -1,5 +1,6 @@
 var express = require("express");
 var https = require("https");
+var path = require("path");
 
 var app = express();
 var staticRouter = express.Router();
@@ -68,5 +69,8 @@ apiRouter.get("/me", function(req, res){
 
 app.use("/api", apiRouter);
 app.use("/", staticRouter);
+app.get("*", function(req, res){
+	res.sendFile(path.resolve(__dirname + '/../public/index.html'));
+});
 
 app.listen(8080);
