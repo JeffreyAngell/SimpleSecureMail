@@ -4,24 +4,35 @@
 
 var ssmailControllers = angular.module('ssmailControllers', []);
 
-ssmailControllers.controller('EncryptControl', ['$scope', 'Key',
-  function($scope, Key) {   
-    $scope.checkEmail = function() {    
-      if(!$scope.emailForm.$valid){
-        alert('Please enter a valid email address');
+String.prototype.endsWith = function(suffix){
+	return this.indexOf(suffix, this.length - suffix.length) !== -1;
+}
+
+ssmailControllers.controller('EncryptControl', ['$scope', '$location', 'Key',
+  function($scope, $location, Key) {   
+    $scope.hostName = $location.protocol() + "://" + $location.host();
+    $scope.instructions = '\n\nTo decrypt this email, go to ' + $scope.hostName + '/decrypt, and press log in to authenticate with Google.' +
+                           ' Then, press the get key button to retrieve your private key, paste the encrypted part of this email into the box '+
+                           'and hit decrypt.'
+    $scope.validEmail = true;
+    $scope.checkEmail = function() {  
+      if(!$scope.emailForm.$valid  || !$scope.emailAddress.endsWith('gmail.com')) {
+        $scope.validEmail = false;
       } else {
-        $scope.pubKeyJson = Key.get({ type : 'public', email : $scope.emailAddress }, function() {
-          $scope.pubKey = $scope.pubKeyJson.key;
-        });        
-      }
+          $scope.validEmail = true;
+          $scope.pubKeyJson = Key.get({ type : 'public', email : $scope.emailAddress }, function() {
+            $scope.pubKey = $scope.pubKeyJson.key;
+          });
+      }        
     }
+
     
     $scope.encryptEmail = function() {
       $scope.encrypt = new JSEncrypt();
       $scope.encrypt.setPublicKey($scope.pubKey);
       $scope.result = $scope.encrypt.encrypt($scope.emailBody);
       if($scope.result) {
-        $scope.emailBody = $scope.result;
+        $scope.emailBody = $scope.result + $scope.instructions;
       } else {
         alert('Error: Please check public key and try again');
       }

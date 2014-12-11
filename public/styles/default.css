@@ -30,18 +30,28 @@ body {
 
 @media (max-width: 480px) {
     .slogan{
-      font-size:18px;
+      font-size:22px;
     }
 }
 
-.en-button {
-  float:right;
+.orange-text {
+  color:#2B2922;
+  font-size:2em;
+  text-shadow:
+    -1px -1px 0 #FFF,
+    1px -1px 0 #FFF,
+    -1px 1px 0 #FFF,
+    1px 1px 0 #FFF;
 }
 
 @media (max-width: 640px) {
     .slogan{
       font-size:22px;
     }
+}
+
+.en-button {
+  float:right;
 }
 
 .small-top-buffer {
@@ -110,9 +120,19 @@ span {
 }
 
 .blank-col {
-  width: 90px !important
+  width: 10% !important
 }
 
 .big-blank-row {
   height: 15px !important;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+.bad-text{
+  color: rgb(207,0,0);
+}
+.badInputBox{
+	border-color: red;
 }
