@@ -1,14 +1,17 @@
 <div class="row">
   <div class="col-md-12 col-lg-12" style="text-align:left">
-    <table width="40%">
+    <table width="100%">
       <tr>
-        <td style="vertical-align:middle">
+        <td style="vertical-align:middle" width="10%">
           <span class="dark-text">Email Address: </span>
         </td>
         <td>
           <form name="emailForm">
             <input type="email" name="input" ng-model="emailAddress" class="cream-text" size="30" required/>
           </form>
+        </td>
+        <td>
+          <div class="alert alert-danger" ng-show="!validEmail" role="alert" width="10%">Please enter a valid gmail.com address.</div>
         </td>
       </tr>
       <tr class="blank-row"></tr>
