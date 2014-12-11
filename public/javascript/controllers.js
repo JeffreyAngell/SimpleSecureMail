@@ -26,12 +26,18 @@ ssmailControllers.controller('EncryptControl', ['$scope', 'Key',
         alert('Error: Please check public key and try again');
       }
     }
+
+    $scope.clearMessage = function() {
+      $scope.emailBody = "";
+    }
   }]);
   
-ssmailControllers.controller('DecryptControl', ['$scope', 'PrivKey', '$window', '$http',
-  function($scope, PrivKey, $window, $http) {
+ssmailControllers.controller('DecryptControl', ['$scope', 'PrivKey', '$window', '$http', '$location', 
+  function($scope, PrivKey, $window, $http, $location) {
 
     if ($http.defaults.headers.common.Authorization){
+      $scope.loggedInName = "...(accessing google auth)"
+      $scope.fullLocation = $location.absUrl()
       $scope.buttonText = "Get Key";
       $scope.isLoggedIn = true;
       $http.get("/api/me").success(function(data){
@@ -67,5 +73,9 @@ ssmailControllers.controller('DecryptControl', ['$scope', 'PrivKey', '$window', 
       } else {
         alert('Error: Please check the private key and try again');
       }
+    }
+
+    $scope.clearMessage = function() {
+      $scope.emailBody = "";
     }
   }]);

@@ -3,7 +3,7 @@
     <table width="40%">
       <tr>
 
-          <span ng-show="isLoggedIn">Logged in as {{loggedInName}} <a href="https://accounts.google.com/logout">logout</a></span>
+          <p ng-show="isLoggedIn">Logged in as {{loggedInName}} : <a ng-href="https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue={{fullLocation}}">Logout</a></p>
  
       </tr>
       <tr class="blank-row"></tr>
@@ -28,6 +28,7 @@
 
 <div class="row">
   <div class="col-md-12">
+    <button ng-click="clearMessage()" class="orange-button">Clear</button>
     <button ng-click="decryptEmail()" class="orange-button en-button">Decrypt</button>
   </div>
 </div>
