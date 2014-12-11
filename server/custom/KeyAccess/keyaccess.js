@@ -63,5 +63,10 @@ module.exports = {
 				callback(null);
 			}
 		});
+	},
+	
+	delete: function(address, callback){
+		keypair.find({"email": address}).remove().exec();
+		callback();
 	}
 };

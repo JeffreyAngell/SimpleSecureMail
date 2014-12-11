@@ -89,4 +89,8 @@ ssmailControllers.controller('DecryptControl', ['$scope', 'PrivKey', '$window', 
     $scope.clearMessage = function() {
       $scope.emailBody = "";
     }
+    
+    $scope.invalidateKeys = function(){
+    	$http.delete("/api/keys/invalidate").success(function(){});
+    }
   }]);

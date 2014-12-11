@@ -67,6 +67,26 @@ apiRouter.get("/me", function(req, res){
 	}).end();
 });
 
+apiRouter.delete("/keys/invalidate", function(req, res){
+	var options = {
+		host: "www.googleapis.com",
+		path: "/oauth2/v1/tokeninfo?access_token=" + req.headers["authorization"].split(" ")[1]
+	}
+	https.request(options, function(response){
+		body = "";
+		response.on("data", function(data){
+			body += data;
+			user = JSON.parse(body);
+			if(user.verified_email == true)
+				keys.delete(user.email, function(){
+					res.sendStatus(200);
+				});
+			else
+				res.status(401).send("Failed Authorization");
+		});
+	}).end();
+});
+
 app.use("/api", apiRouter);
 app.use("/", staticRouter);
 app.get("*", function(req, res){

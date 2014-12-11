@@ -3,7 +3,7 @@
     <table width="40%">
       <tr>
 
-          <p ng-show="isLoggedIn">Logged in as {{loggedInName}} : <a ng-href="https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue={{fullLocation}}">Logout</a></p>
+          <p ng-show="isLoggedIn">Logged in as {{loggedInName}} : <a ng-href="https://accounts.google.com/logout?continue=https://appengine.google.com/_ah/logout?continue={{fullLocation}}">Logout</a> &nbsp; <a ng-click="invalidateKeys()" href="">Delete my keys</a></p>
  
       </tr>
       <tr class="blank-row"></tr>
